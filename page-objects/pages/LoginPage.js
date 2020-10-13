@@ -21,6 +21,13 @@ class LoginPage extends Base {
     this.submitBtn.click();
   }
 
+  login(username, password) {
+    this.loginForm.waitForExist();
+    this.usernameInput.setValue(username);
+    this.passwordInput.setValue(password);
+    this.submitBtn.click();
+  }
+
 }
 
 export default new LoginPage()
