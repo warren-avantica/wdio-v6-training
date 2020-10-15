@@ -1,0 +1,9 @@
+{
+  "app": {
+    "url" : "http://react-redux.realworld.io/#/",
+    "admin" : {
+      "email": "asdsadasd",
+      "password": "adasasd"
+    } 
+  }
+}

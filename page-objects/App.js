@@ -1,14 +1,14 @@
 class App {
   openHomepage() {
-    browser.url('http://zero.webappsecurity.com/index.html');
+    browser.url('/');
   }
 
   openLoginPage() {
-    browser.url('http://zero.webappsecurity.com/login.html')
+    browser.url('/#login')
   }
 
   logout() {
-    browser.url('http://zero.webappsecurity.com/logout.html')
+    //browser.url('http://zero.webappsecurity.com/logout.html')
   }
 }
 

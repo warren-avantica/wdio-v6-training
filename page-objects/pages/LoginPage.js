@@ -2,18 +2,19 @@ import Base from '../Base'
 
 class LoginPage extends Base { 
   
-  get loginForm() {return $('#login_form')}
-  get usernameInput() {return $('#user_login')}
-  get passwordInput() {return $('#user_password')}
-  get submitBtn() {return $('input[type="submit"]')}
-  get errorMessage() {return $('.alert-error')}
+  get loginForm() {return $('form')}
+  get emailInput() {return $('input[type="email"]')}
+  get passwordInput() {return $('input[type="password"]')}
+  get submitBtn() {return $('button[type="submit"]')}
+  get errorMessage() {return $('.error-messages li')}
+  get needAnAccountLink() {return $('a=Need an account?')}
 
   formIsVisible() {
     this.loginForm.waitForExist();
   }
 
   fillForm(username, password) {
-    this.usernameInput.setValue(username);
+    this.emailInput.setValue(username);
     this.passwordInput.setValue(password);
   }
 
@@ -23,7 +24,7 @@ class LoginPage extends Base {
 
   login(username, password) {
     this.loginForm.waitForExist();
-    this.usernameInput.setValue(username);
+    this.emailInput.setValue(username);
     this.passwordInput.setValue(password);
     this.submitBtn.click();
   }

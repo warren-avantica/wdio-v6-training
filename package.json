@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js"
+    "test": "wdio wdio.conf.js",
+    "qa1": "export NODE_ENV=qa1 && npx wdio wdio.conf.js > test-results/test-results-qa1-`date +%Y-%m-%d-%H%M`.log"
   },
   "repository": {
     "type": "git",
@@ -22,15 +23,18 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/register": "^7.9.0",
+    "@wdio/allure-reporter": "^6.6.3",
     "@wdio/cli": "^6.0.16",
     "@wdio/local-runner": "^6.0.16",
     "@wdio/mocha-framework": "^6.0.16",
     "@wdio/spec-reporter": "^6.0.16",
     "@wdio/sync": "^6.0.16",
+    "allure-commandline": "^2.13.0",
     "chromedriver": "^86.0.0",
     "wdio-chromedriver-service": "^6.0.2"
   },
   "dependencies": {
+    "config": "^3.3.2",
     "prettier": "^2.0.4"
   }
 }

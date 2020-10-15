@@ -1,5 +1,3 @@
-const config = require('./lib/config')
-
 exports.config = {
     //
     // ====================
@@ -19,7 +17,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/homePage.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -41,7 +39,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: config.maxInstance,
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,7 +52,7 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: config.browser,
+        browserName: 'chrome',
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -67,7 +65,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: config.logLevel,
+    logLevel: 'info',
     //
     // Set specific log levels per logger
     // loggers:
@@ -91,10 +89,10 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: config.baseUrl,
+    baseUrl: require('config').get('app.url'),
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: config.timeout,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -196,6 +194,27 @@ exports.config = {
                 $(selector).setValue(text);
             } catch (error) {
                 throw new Error(`Could not type into the given selector: ${selector}`);
+            }
+        })
+
+        browser.addCommand('waitForElement', function(selector) {
+            try {
+                browser.waitUntil(() => {
+                    $(selector).isDisplayed() 
+                }, {
+                    timeout: 5000
+                })
+            } catch (error) {
+                throw new Error(`Could not wait for the given selector: ${selector}`);
+            }
+        })
+
+        browser.addCommand('scrollIntoElement', function(selector) {
+            try {
+                $(selector).waitForExist();
+                $(selector).scrollIntoView();
+            } catch (error) {
+                throw new Error(`Could not scrol into the given selector: ${selector}`);
             }
         })
     },
