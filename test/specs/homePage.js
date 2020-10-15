@@ -2,8 +2,8 @@ import HomePage from '../../page-objects/pages/HomePage'
 import App from '../../page-objects/App'
 import LoginPage from '../../page-objects/pages/LoginPage'
 
-const email = require('config').get('app.admin.email')
-const password = require('config').get('app.admin.password')
+const email = process.env.WDIO_CONDUIT_EMAIL;
+const password = process.env.WDIO_CONDUIT_PASS;
 
 // beforeEach(() => {
 //   App.openLoginPage();

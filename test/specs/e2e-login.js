@@ -3,8 +3,8 @@ import LoginPage from '../../page-objects/pages/LoginPage'
 import Navbar from '../../page-objects/components/Navbar'
 import * as dataHelper from '../../lib/data-helpers'
 
-const email = require('config').get('app.admin.email')
-const password = require('config').get('app.admin.password')
+const email = process.env.WDIO_CONDUIT_EMAIL;
+const password = process.env.WDIO_CONDUIT_PASS;
 
 describe("E2E Login page", () => {
   
@@ -12,7 +12,7 @@ describe("E2E Login page", () => {
    App.openHomepage();
    Navbar.clickSignIn();
    LoginPage.formIsVisible();
-   LoginPage.fillForm('asd@asd.com', password);
+   LoginPage.fillForm(email, password);
    LoginPage.submitForm();
    expect(LoginPage.errorMessage.getText()).toEqual('email or password is invalid')
   });
