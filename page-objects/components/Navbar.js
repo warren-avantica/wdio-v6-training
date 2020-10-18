@@ -9,6 +9,7 @@ class Navbar extends Base {
   get settingsButton() {return $('.icon-cog')}
   get newPostButton() {return $('a*=New Post')}
   get helpButton() {return $('#help_link')}
+  get userProfileBtn() {return $('.navbar-nav > li:nth-last-child(1)')}
 
   clickSignIn() {
     this.signInBtn.waitForExist();
@@ -31,14 +32,23 @@ class Navbar extends Base {
     this.signInBtn.waitForExist();
   }
 
+  clickSignUpBtn() {
+    this.signUpBtn.waitForExist();
+    this.signUpBtn.click();
+  }
+
   clickSettings() {
     this.settingsButton.waitForExist();
     this.settingsButton.click();
   }
 
-  clickSettings() {
+  clickHelp() {
     this.helpButton.waitForExist();
     this.helpButton.click();
+  }
+
+  isUserProfileBtnDisplayed() {
+    this.userProfileBtn.waitForDisplayed();
   }
 }
 
