@@ -6,7 +6,7 @@ class Navbar extends Base {
   get signUpBtn() {return $('a=Sign up')}
   get homeBtn() {return $('a=Home')}
   get navTabs() {return $('.nav-tabs')}
-  get settingsButton() {return $('.icon-cog')}
+  get settingsButton() {return $('a*=Settings')}
   get newPostButton() {return $('a*=New Post')}
   get helpButton() {return $('#help_link')}
   get userProfileBtn() {return $('.navbar-nav > li:nth-last-child(1)')}
@@ -45,6 +45,11 @@ class Navbar extends Base {
   clickHelp() {
     this.helpButton.waitForExist();
     this.helpButton.click();
+  }
+
+  clickNewPost() {
+    this.newPostButton.waitForDisplayed();
+    this.newPostButton.click();
   }
 
   isUserProfileBtnDisplayed() {

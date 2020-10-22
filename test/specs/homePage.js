@@ -5,14 +5,14 @@ import LoginPage from '../../page-objects/pages/LoginPage'
 const email = process.env.WDIO_CONDUIT_EMAIL;
 const password = process.env.WDIO_CONDUIT_PASS;
 
-// beforeEach(() => {
-//   App.openLoginPage();
-//   LoginPage.login(email, password)
-// });
+beforeEach(() => {
+  App.openLoginPage();
+  LoginPage.login(email, password)
+});
 
-// afterEach(() => {
-//   browser.execute(() => localStorage.clear())
-// });
+afterEach(() => {
+  browser.execute(() => localStorage.clear())
+});
 
 describe('Homepage', () => {
 

@@ -8,6 +8,7 @@ const faker = require('faker');
 const username = faker.internet.userName();
 const email = faker.internet.email();
 const password = process.env.WDIO_CONDUIT_PASS;
+
 describe('Sign up page', () => {
 
   it('should signup correctly', () => {

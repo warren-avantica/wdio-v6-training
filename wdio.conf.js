@@ -179,6 +179,7 @@ exports.config = {
      */
     before: function (capabilities, specs) {
 
+
         browser.addCommand('waitAndClick', function(selector) {
             try {
                 $(selector).waitForExist();
