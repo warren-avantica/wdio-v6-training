@@ -3,6 +3,7 @@ import LoginPage from '../../page-objects/pages/LoginPage'
 import Navbar from '../../page-objects/components/Navbar'
 import NewArticlePage from '../../page-objects/pages/NewArticlePage'
 import ArticleDetailPage from '../../page-objects/pages/ArticleDetailPage'
+import SettingsPage from '../../page-objects/pages/SettingsPage'
 
 const faker = require('faker');
 
@@ -23,9 +24,7 @@ describe('Comment section', () => {
 
   afterEach(() => {
     Navbar.clickSettings();
-    $('.btn.btn-outline-danger').waitForExist();
-    $('.btn.btn-outline-danger').scrollIntoView();
-    $('.btn.btn-outline-danger').click();
+    SettingsPage.logout();
   });
 
   it('should navigate to new comment section', () => {

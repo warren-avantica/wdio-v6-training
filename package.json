@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js",
+    "test": "export NODE_ENV=qa1 && wdio wdio.conf.js",
     "qa1": "export NODE_ENV=qa1 && npx wdio wdio.conf.js > test-results/test-results-qa1-`date +%Y-%m-%d-%H%M`.log"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "allure-commandline": "^2.13.0",
     "chromedriver": "^86.0.0",
     "faker": "^5.1.0",
+    "moment": "^2.29.1",
     "wdio-chromedriver-service": "^6.0.2"
   },
   "dependencies": {

@@ -17,7 +17,10 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './test/specs/homePage.js'
+        './test/specs/homePage.js',
+        './test/specs/e2e-comment.js',
+        './test/specs/e2e-signup.js',
+        './test/specs/e2e-login.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -253,8 +256,17 @@ exports.config = {
     /**
      * Function to be executed after a test (in Mocha/Jasmine).
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: function(test, context, { error, result, duration, passed, retries }) {
+        const path = require('path');
+		const moment = require('moment');
+		if (passed) {
+			return;
+		}
+		const timestamp = moment().format('YYYYMMDD-HHmmss.SSS');
+		const filepath = path.join('test-results/screenshots/', timestamp + '-' + test.title + '.png');
+		browser.saveScreenshot(filepath);
+		process.emit('test:screenshot', filepath);
+    },
 
 
     /**
